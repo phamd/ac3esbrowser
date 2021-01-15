@@ -76,6 +76,14 @@ struct bsi
   uint8_t           m_audprodi2e;
   uint8_t           m_mixlevel2;
   uint8_t           m_roomtyp2;
+  uint8_t           m_copyrightb;
+  uint8_t           m_origbs;
+  uint8_t           m_timecod1e;
+  uint16_t          m_timecod1;
+  uint8_t           m_timecod2e;
+  uint16_t          m_timecod2;
+  uint8_t           m_addbsie;
+  uint8_t           m_addbsil;
   uint8_t           m_strmtyp;
   uint8_t           m_substreamid;
   uint32_t          m_frmsiz;

@@ -180,7 +180,49 @@ std::size_t AC3ParserImpl::processAC3Header(BitstreamReader *pbs, AC3Frame *pfra
   pframe -> m_bsi.m_langcode = pbs -> getBits(1);
   if(pframe -> m_bsi.m_langcode)
     pframe -> m_bsi.m_langcod = pbs -> getBits(8);
-  
+
+  pframe -> m_bsi.m_audprodie = pbs -> getBits(1);
+  if(pframe -> m_bsi.m_audprodie)
+  {
+    pframe -> m_bsi.m_mixlevel = pbs -> getBits(5);
+    pframe -> m_bsi.m_roomtyp = pbs -> getBits(2);
+  }
+
+  if(pframe -> m_bsi.m_acmod == AC3_CHMODE_DUALMONO)
+  {
+    pframe -> m_bsi.m_dialnorm2 = pbs -> getBits(5);
+    pframe -> m_bsi.m_compr2e = pbs -> getBits(1);
+
+    if(pframe -> m_bsi.m_compr2e)
+      pframe -> m_bsi.m_compr2 = pbs -> getBits(8);
+
+    pframe -> m_bsi.m_langcod2e = pbs -> getBits(1);
+    if(pframe -> m_bsi.m_langcod2e)
+      pframe -> m_bsi.m_langcod2 = pbs -> getBits(8);
+
+    pframe -> m_bsi.m_audprodi2e = pbs -> getBits(1);
+    if(pframe -> m_bsi.m_audprodi2e)
+    {
+      pframe -> m_bsi.m_mixlevel2 = pbs -> getBits(5);
+      pframe -> m_bsi.m_roomtyp2 = pbs -> getBits(2);
+    }
+  }
+
+  pframe -> m_bsi.m_copyrightb = pbs -> getBits(1);
+  pframe -> m_bsi.m_origbs = pbs -> getBits(1);
+
+  pframe -> m_bsi.m_timecod1e = pbs -> getBits(1);
+  if(pframe -> m_bsi.m_timecod1e)
+    pframe -> m_bsi.m_timecod1 = pbs -> getBits(14);
+
+  pframe -> m_bsi.m_timecod2e = pbs -> getBits(1);
+  if(pframe -> m_bsi.m_timecod2e)
+    pframe -> m_bsi.m_timecod2 = pbs -> getBits(14);
+
+  pframe -> m_bsi.m_addbsie = pbs -> getBits(1);
+  if(pframe -> m_bsi.m_addbsie)
+    pframe -> m_bsi.m_addbsil = pbs -> getBits(6);
+
   uint8_t srShift = (pframe -> m_bsi.m_bsid > 8 ? pframe -> m_bsi.m_bsid : 8) - 8;
   
   if(pframe -> m_syncinfo.m_fscod != 3)

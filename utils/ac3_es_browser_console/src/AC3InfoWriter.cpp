@@ -104,6 +104,47 @@ void AC3InfoWriter::writeAC3BSI(std::ostream &out, const AC3Frame &frame)
   out << "\t\t" << "langcode = " << (int) frame.m_bsi.m_langcode << std::endl;  
   if(frame.m_bsi.m_langcode)
     out << "\t\t\t" << "langcod = " << (int) frame.m_bsi.m_langcod << std::endl;
+
+  out << "\t\t" << "audprodie = " << (int) frame.m_bsi.m_audprodie << std::endl;
+  if(frame.m_bsi.m_audprodie)
+  {
+    out << "\t\t\t" << "mixlevel = " << (int) frame.m_bsi.m_mixlevel << std::endl;
+    out << "\t\t\t" << "roomtyp = " << (int) frame.m_bsi.m_roomtyp << std::endl;
+  }
+
+  if(frame.m_bsi.m_acmod == AC3_CHMODE_DUALMONO)
+  {
+    out << "\t\t" << "dialnorm2 = " << (int) frame.m_bsi.m_dialnorm2 << std::endl;
+    out << "\t\t" << "compr2e = " << (int) frame.m_bsi.m_compr2e << std::endl;
+    if(frame.m_bsi.m_compr2e)
+      out << "\t\t\t" << "compr2 = " << (int) frame.m_bsi.m_compr2 << std::endl;
+
+    out << "\t\t" << "langcod2e = " << (int) frame.m_bsi.m_langcod2e << std::endl;
+    if(frame.m_bsi.m_langcod2e)
+      out << "\t\t\t" << "langcod2 = " << (int) frame.m_bsi.m_langcod2 << std::endl;
+
+    out << "\t\t" << "audprodi2e = " << (int) frame.m_bsi.m_audprodi2e << std::endl;
+    if(frame.m_bsi.m_audprodi2e)
+    {
+      out << "\t\t\t" << "mixlevel2 = " << (int) frame.m_bsi.m_mixlevel2 << std::endl;
+      out << "\t\t\t" << "roomtyp2 = " << (int) frame.m_bsi.m_roomtyp2 << std::endl;
+    }
+  }
+
+  out << "\t\t" << "copyrightb = " << (int) frame.m_bsi.m_copyrightb << std::endl;
+  out << "\t\t" << "origbs = " << (int) frame.m_bsi.m_origbs << std::endl;
+
+  out << "\t\t" << "timecod1e = " << (int) frame.m_bsi.m_timecod1e << std::endl;
+  if (frame.m_bsi.m_timecod1e)
+    out << "\t\t\t" << "timecod1 = " << (int) frame.m_bsi.m_timecod1 << std::endl;
+
+  out << "\t\t" << "timecod2e = " << (int) frame.m_bsi.m_timecod2e << std::endl;
+  if (frame.m_bsi.m_timecod2e)
+    out << "\t\t\t" << "timecod2 = " << (int) frame.m_bsi.m_timecod2 << std::endl;
+
+  out << "\t\t" << "addbsie = " << (int) frame.m_bsi.m_addbsie << std::endl;
+  if (frame.m_bsi.m_addbsie)
+    out << "\t\t\t" << "addbsil = " << (int) frame.m_bsi.m_addbsil << std::endl;
 }
 
 
